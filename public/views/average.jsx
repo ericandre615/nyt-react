@@ -45,7 +45,7 @@ export default React.createClass({
   render() {
     let averagesHeaders = this.state.days.map((day, index) => {
       return (
-        <th>
+        <th key={index}>
           {day.day}
         </th>
       )

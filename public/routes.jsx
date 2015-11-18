@@ -11,6 +11,7 @@ import FourOhFour from './views/404.jsx';
 export default (
   <Route name="app" path='/' handler={App} >
     <Route name="results" path="results/:search_query" handler={Results} />
+    <Route name="default-results" path="/results/" handler={Results} />
     <Route name="recent" path="articles/recent" handler={Recent} />
     <Route name="average" path="articles/average" handler={Average} />
     <Route name="404" handler={FourOhFour} />

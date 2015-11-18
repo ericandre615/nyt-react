@@ -28,10 +28,11 @@ export default React.createClass({
   },
   render() {
     let results = this.state.searchResults.map((result, index) => {
+      let headline = (result.headline.name) ? result.headline.main += ' - ' + result.headline.name : result.headline.main;
       return(
         <li className="article" key={index}>
-          <h3>{result.headline.main} {(result.headline.name) ? `- ${article.headline.name}`: null}</h3>
-          <p>{result.snippet}</p>
+          <h3 dangerouslySetInnerHTML={{__html: headline}} />
+          <p dangerouslySetInnerHTML={{__html: result.snippet}} />
         </li>
       );
     });

@@ -107,6 +107,7 @@
 	  _reactRouter.Route,
 	  { name: 'app', path: '/', handler: _viewsAppJsx2['default'] },
 	  _react2['default'].createElement(_reactRouter.Route, { name: 'results', path: 'results/:search_query', handler: _viewsResultsJsx2['default'] }),
+	  _react2['default'].createElement(_reactRouter.Route, { name: 'default-results', path: '/results/', handler: _viewsResultsJsx2['default'] }),
 	  _react2['default'].createElement(_reactRouter.Route, { name: 'recent', path: 'articles/recent', handler: _viewsRecentJsx2['default'] }),
 	  _react2['default'].createElement(_reactRouter.Route, { name: 'average', path: 'articles/average', handler: _viewsAverageJsx2['default'] }),
 	  _react2['default'].createElement(_reactRouter.Route, { name: '404', handler: _views404Jsx2['default'] }),
@@ -25018,16 +25019,11 @@
 
 	  render: function render() {
 	    var articles = this.props.recentArticles.map(function (article, index) {
+	      var headline = article.headline.name ? article.headline.main += ' - ' + article.headline.name : article.headline.main;
 	      return _react2['default'].createElement(
 	        'li',
 	        { className: 'article', key: index },
-	        _react2['default'].createElement(
-	          'h3',
-	          null,
-	          article.headline.main,
-	          ' ',
-	          article.headline.name ? '- ' + article.headline.name : null
-	        )
+	        _react2['default'].createElement('h3', { dangerouslySetInnerHTML: { __html: headline } })
 	      );
 	    });
 
@@ -25094,7 +25090,7 @@
 	    var averagesHeaders = this.state.days.map(function (day, index) {
 	      return _react2['default'].createElement(
 	        'th',
-	        null,
+	        { key: index },
 	        day.day
 	      );
 	    });
@@ -25191,21 +25187,12 @@
 	  },
 	  render: function render() {
 	    var results = this.state.searchResults.map(function (result, index) {
+	      var headline = result.headline.name ? result.headline.main += ' - ' + result.headline.name : result.headline.main;
 	      return _react2['default'].createElement(
 	        'li',
 	        { className: 'article', key: index },
-	        _react2['default'].createElement(
-	          'h3',
-	          null,
-	          result.headline.main,
-	          ' ',
-	          result.headline.name ? '- ' + article.headline.name : null
-	        ),
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          result.snippet
-	        )
+	        _react2['default'].createElement('h3', { dangerouslySetInnerHTML: { __html: headline } }),
+	        _react2['default'].createElement('p', { dangerouslySetInnerHTML: { __html: result.snippet } })
 	      );
 	    });
 	    return _react2['default'].createElement(
