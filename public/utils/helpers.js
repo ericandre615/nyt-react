@@ -8,7 +8,14 @@ const searchArticles = (query) => {
 };
 
 const getRecentArticles = () => {
-  return axios.get(`${config.nytApi}&sort=newest`)
+  let today = new Date();
+  let month = (today.getMonth().toString().length > 1) ? today.getMonth() + 1 : '0'+today.getMonth()+1;
+  let year = today.getFullYear();
+  let day = (today.getDate().toString().length > 1) ? today.getDate() : '0'+today.getDate();
+
+  let formattedDate = ''+ year + month + day + ''; // having the empty '' with + forces values to string so they are concatenated rather than addition
+
+  return axios.get(`${config.nytApi}&sort=newest&end_date=${formattedDate}`)
     .then(response => {
       return response;
     })
