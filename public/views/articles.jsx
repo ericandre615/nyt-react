@@ -9,9 +9,10 @@ export default React.createClass({
 
   render() {
     let articles = this.props.recentArticles.map((article, index) => {
+      let headline = (article.headline.name) ? article.headline.main += ' - ' + article.headline.name : article.headline.main;
       return(
         <li className="article" key={index}>
-          <h3>{article.headline.main} {(article.headline.name) ? `- ${article.headline.name}`: null}</h3>
+          <h3 dangerouslySetInnerHTML={{__html: headline}} />
         </li>
       );
     });
