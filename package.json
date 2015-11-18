@@ -1,0 +1,23 @@
+{
+  "name": "nyt-react",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run webpack && node index.js",
+    "webpack": "rm -rf public/bundle.js && webpack"
+  },
+  "dependencies": {
+    "axios": "^0.7.0",
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.34",
+    "babel-loader": "^5.3.0",
+    "express": "^4.12.3",
+    "history": "^1.13.1",
+    "json-loader": "^0.5.2",
+    "node-libs-browser": "^0.5.2",
+    "react": "^0.13.3",
+    "react-engine": "^2",
+    "react-router": "^0.13.4",
+    "webpack": "^1.10.0"
+  }
+}
