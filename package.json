@@ -4,8 +4,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run webpack && node index.js",
-    "webpack": "rm -rf public/bundle.js && webpack"
+    "webpack": "rm -rf public/bundle.js && ./node_modules/webpack/bin/webpack.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericandre615/nyt-react.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.7.0",
     "babel": "^5.8.23",
