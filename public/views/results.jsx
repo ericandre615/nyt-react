@@ -2,14 +2,14 @@ import React from 'react';
 import { searchArticles } from '../utils/helpers';
 
 export default React.createClass({
-  componentWillMount() {
-    this.state = {
+  getInitialState() {
+    return {
       search_query: this.props.params.search_query,
       searchResults: []
     }
   },
-  componentWillReceiveProps() {
-    this.search_query = this.props.params.search_query;
+  componentWillReceiveProps(nextProps) {
+    this.search_query = nextProps.params.search_query;
     searchArticles(this.search_query)
       .then((data) => {
         this.setState({

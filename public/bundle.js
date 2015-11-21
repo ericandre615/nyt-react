@@ -25159,16 +25159,19 @@
 	exports['default'] = _react2['default'].createClass({
 	  displayName: 'results',
 
-	  componentWillMount: function componentWillMount() {
-	    this.state = {
+	  getInitialState: function getInitialState() {
+	    return {
 	      search_query: this.props.params.search_query,
 	      searchResults: []
 	    };
 	  },
-	  componentWillReceiveProps: function componentWillReceiveProps() {
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	    var _this = this;
 
-	    this.search_query = this.props.params.search_query;
+	    console.log('cRWP nPs', nextProps);
+	    console.log('before set, ', this.search_query);
+	    this.search_query = nextProps.params.search_query;
+	    console.log('after set, ', this.search_query);
 	    (0, _utilsHelpers.searchArticles)(this.search_query).then(function (data) {
 	      _this.setState({
 	        searchResults: data.data.response.docs
